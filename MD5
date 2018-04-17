@@ -1,9 +1,11 @@
-49e9b43c3ddaa2b512488bc8b4d943c0 *DESCRIPTION
+8ebc205ebb55400050b9523912088f3b *DESCRIPTION
 b5f581f92d24d095ca4ce0ba8d5d2c9b *NAMESPACE
-2307b5df726925a48e8e5ce08d8d633c *R/get_gender.R
+0a96bca5a54c44d52018b6123d75f857 *NEWS.md
+dc70c9a73f19f01b99c277ad64c00b9a *R/get_gender.R
 fbb875dca93318eea306462f01b5ae87 *R/map_gender.R
-0f2673504d6fafbc5d8a85b6a83f0059 *R/utils.R
-d81274cd962a7b2debba4f7c327556ad *README.md
-653c448c4000769f074fef4dbe5cf2cc *man/get_gender.Rd
+930d8b2338b911a0b23255c961e9ec26 *R/sysdata.rda
+f2526a2e68e651bb98b3795bf6c532e4 *R/utils.R
+fbcb93aeb66c583f46ae49b447dc8098 *README.md
+a1c9e3fcce9d35067af80824f00922a6 *man/get_gender.Rd
 2898893ede0745fa26ba80d9518b8482 *man/get_states.Rd
 19a3d66f078959e611ce66b89ba1d424 *man/map_gender.Rd
