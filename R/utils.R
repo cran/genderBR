@@ -2,7 +2,7 @@
 .onAttach <-
   function(libname, pkgname) {
     packageStartupMessage("\nTo cite genderBR in publications, use: citation('genderBR')")
-    packageStartupMessage("To learn more, visit: http://fmeireles.com/genderbr\n")
+    packageStartupMessage("To learn more, visit: fmeireles.com/genderbr\n")
   }
 
 
@@ -16,7 +16,7 @@
 
 get_states <- function(){
 
-  dplyr::tibble(state = c("ACRE", "ALAGOAS", "AMAPA", "AMAZONAS", "BAHIA", "CEARA", "DISTRITO FEDERAL",
+  tibble::tibble(state = c("ACRE", "ALAGOAS", "AMAPA", "AMAZONAS", "BAHIA", "CEARA", "DISTRITO FEDERAL",
                        "ESPIRITO SANTO", "GOIAS", "MARANHAO", "MATO GROSSO DO SUL", "MATO GROSSO",
                        "MINAS GERAIS", "PARA", "PARAIBA", "PARANA", "PERNAMBUCO", "PIAUI",
                        "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDONIA",
@@ -60,7 +60,7 @@ round_guess <- function(prob, threshold){
 clean_names <- function(name){
 
   sub("(.*?) .*", "\\1", name) %>%
-    iconv(to = "ASCII//TrANSLIT") %>%
+    iconv(to = "ASCII//TRANSLIT") %>%
     tolower()
 }
 
@@ -86,5 +86,9 @@ state2code <- function(uf){
 }
 
 
-# Avoid the R CMD check note about magrittr's dot
-utils::globalVariables(".")
+# Safe GET (to avoid unninformative timeouts)
+get_safe <- purrr::possibly(httr::GET, otherwise = NULL)
+
+
+
+

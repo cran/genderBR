@@ -18,7 +18,7 @@
 #' are considered.
 #'
 #' @references For more information on the IBGE's data, please check (in Portuguese):
-#' \url{http://censo2010.ibge.gov.br/nomes/}
+#' \url{https://censo2010.ibge.gov.br/nomes/}
 #'
 #' @seealso \code{\link{get_gender}}
 #'
@@ -55,9 +55,6 @@
 #' }
 #'
 #'
-#' @import jsonlite
-#' @import dplyr
-#' @import httr
 #' @export
 
 
@@ -68,14 +65,15 @@ map_gender <- function(name, gender = NULL){
   name <- clean_names(name)
 
   # GET
-  total <- "http://servicodados.ibge.gov.br/api/v1/censos/nomes/mapa" %>%
-    httr::GET(query = list(nome = name, sexo = gender))
+  total <- "https://servicodados.ibge.gov.br/api/v1/censos/nomes/mapa" %>%
+    get_safe(query = list(nome = name, sexo = gender))
 
   # Test response
+  if(is.null(total)) stop("IBGE's API is not responding. Try again later.")
   httr::stop_for_status(total)
 
   # Parse and return
   httr::content(total, as = "text") %>%
     jsonlite::fromJSON() %>%
-    dplyr::as.tbl()
+    tibble::as_tibble()
 }
